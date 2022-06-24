@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="explore">Explore</string>
+    <string name="library">Library</string>
+    <string name="notifications">Notification</string>
+    <string name="subscriptions">Subscription</string>
+</resources>
