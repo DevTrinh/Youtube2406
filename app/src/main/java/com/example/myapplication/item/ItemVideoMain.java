@@ -7,16 +7,18 @@ public class ItemVideoMain {
     private String tvNameChannel;
     private String tvViewCount;
     private String tvTimeUp;
+    private String idVideo;
 
     public ItemVideoMain(String tvTitleVideo, String ivVideo,
                          String ivAvtChannel, String tvNameChannel,
-                         String tvViewCount, String tvTimeUp) {
+                         String tvViewCount, String tvTimeUp, String idVideo) {
         this.tvTitleVideo = tvTitleVideo;
         this.ivVideo = ivVideo;
         this.ivAvtChannel = ivAvtChannel;
         this.tvNameChannel = tvNameChannel;
         this.tvViewCount = tvViewCount;
         this.tvTimeUp = tvTimeUp;
+        this.idVideo = idVideo;
     }
 
     public String getTvTitleVideo() {
@@ -65,5 +67,13 @@ public class ItemVideoMain {
 
     public void setTvTimeUp(String tvTimeUp) {
         this.tvTimeUp = tvTimeUp;
+    }
+
+    public String getIdVideo() {
+        return idVideo;
+    }
+
+    public void setIdVideo(String idVideo) {
+        this.idVideo = idVideo;
     }
 }
