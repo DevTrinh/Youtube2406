@@ -19,7 +19,7 @@ public class StarUp extends AppCompatActivity {
             public void run() {
                 finish();
             }
-        }, 4000);
+        }, 3000);
 
     }
 }

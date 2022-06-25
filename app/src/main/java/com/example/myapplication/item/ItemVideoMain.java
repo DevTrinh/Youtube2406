@@ -1,6 +1,8 @@
 package com.example.myapplication.item;
 
-public class ItemVideoMain {
+import java.io.Serializable;
+
+public class ItemVideoMain implements Serializable {
     private String tvTitleVideo;
     private String ivVideo;
     private String ivAvtChannel;
@@ -9,9 +11,11 @@ public class ItemVideoMain {
     private String tvTimeUp;
     private String idVideo;
 
+    private String likeCount;
+
     public ItemVideoMain(String tvTitleVideo, String ivVideo,
                          String ivAvtChannel, String tvNameChannel,
-                         String tvViewCount, String tvTimeUp, String idVideo) {
+                         String tvViewCount, String tvTimeUp, String idVideo, String likeCount) {
         this.tvTitleVideo = tvTitleVideo;
         this.ivVideo = ivVideo;
         this.ivAvtChannel = ivAvtChannel;
@@ -19,9 +23,22 @@ public class ItemVideoMain {
         this.tvViewCount = tvViewCount;
         this.tvTimeUp = tvTimeUp;
         this.idVideo = idVideo;
+        this.likeCount = likeCount;
     }
 
+    public String getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(String likeCount) {
+        this.likeCount = likeCount;
+    }
+
+
     public String getTvTitleVideo() {
+        if (tvTitleVideo.length()>70){
+            return tvTitleVideo+"...";
+        }
         return tvTitleVideo;
     }
 

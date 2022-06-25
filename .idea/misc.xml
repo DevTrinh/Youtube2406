@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/drawable/bg_line_left.xml" value="0.2305" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/drawable/bg_topic_main_off_select.xml" value="0.2305" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/drawable/bg_topic_main_on_select.xml" value="0.2305" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout-v28/activity_play_video.xml" value="0.42916666666666664" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_main.xml" value="0.3522873022659256" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_play_video.xml" value="0.33" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_play_video_main.xml" value="0.33304831124412143" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_star_up.xml" value="0.42916666666666664" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/fragment_play_video_main.xml" value="0.3514322359982899" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/item_hot_keywords.xml" value="0.3522873022659256" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/item_main_video.xml" value="0.33" />
         <entry key="..\:/JavaAndroid/YoutubeNewVersion/app/src/main/res/drawable/bg_topic_main_off_select.xml" value="0.202" />
         <entry key="..\:/JavaAndroid/YoutubeNewVersion/app/src/main/res/drawable/bg_topic_main_top_nav.xml" value="0.295" />
         <entry key="..\:/JavaAndroid/YoutubeNewVersion/app/src/main/res/layout/activity_main.xml" value="0.33" />
