@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startActivity(new Intent(this, StarUp.class));
+//        startActivity(new Intent(this, StarUp.class));
         mapping();
         pbLoadListVideoMain.setVisibility(View.VISIBLE);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -147,11 +147,13 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
                             JSONArray jsonItems = response.getJSONArray(ITEMS);//items
                             String titleVideo = "";
                             String channelName = "";
+                            String idChannel = "";
                             String urlThumbnail = "";
                             String idVideo = "";
                             String viewCount = "";
                             String publishedAt = "";
                             String numberLiker = "";
+                            String commentCount = "";
 //                    Toast.makeText(MainActivity.this, jsonItems.length()+"", Toast.LENGTH_SHORT).show();
                             for (int i = 0; i < jsonItems.length(); i++) {
                                 JSONObject jsonItem = jsonItems.getJSONObject(i);
@@ -161,6 +163,8 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
                                 titleVideo = jsonSnippet.getString(TITLE);
 //                        Toast.makeText(MainActivity.this, titleVideo+"", Toast.LENGTH_SHORT).show();
                                 publishedAt = formatTimeUpVideo(jsonSnippet.getString(PUBLISHED_AT) + "");
+                                idChannel = jsonSnippet.getString(CHANNEL_ID);
+                                Toast.makeText(MainActivity.this, idChannel+"", Toast.LENGTH_SHORT).show();
 //                        Toast.makeText(MainActivity.this, publishedAt + "", Toast.LENGTH_SHORT).show();
                                 JSONObject jsonThumbnail = jsonSnippet.getJSONObject(THUMBNAIL);
                                 JSONObject jsonStandard = jsonThumbnail.getJSONObject("high");
@@ -172,10 +176,12 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
                                 viewCount = formatViewer(jsonStatistics.getInt(VIEW_COUNT));
 //                        Toast.makeText(MainActivity.this, viewCount+"", Toast.LENGTH_SHORT).show();
                                 numberLiker = formatLiker(jsonStatistics.getInt(LIKED_COUNT));
-                                Toast.makeText(MainActivity.this, numberLiker+"", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(MainActivity.this, numberLiker+"", Toast.LENGTH_SHORT).show();
+                                commentCount = formatComment(jsonStatistics.getInt(COMMENT_COUNT));
+//                                Toast.makeText(MainActivity.this, commentCount+"comment", Toast.LENGTH_SHORT).show();
                                 listItemVideo.add(new ItemVideoMain(titleVideo,
                                         urlThumbnail, urlThumbnail, channelName,
-                                        viewCount, publishedAt, idVideo, numberLiker));
+                                        viewCount, publishedAt, idVideo, commentCount, numberLiker));
                             }
                             adapterMainVideoYoutube.notifyDataSetChanged();
                             pbLoadListVideoMain.setVisibility(View.GONE);
@@ -201,7 +207,18 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
             index++;
         }
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        return String.format("%s %s Views", decimalFormat.format(value), arr[index]);
+        return String.format("%s%s Views", decimalFormat.format(value), arr[index]);
+    }
+
+    public String formatComment(int value) {
+        String arr[] = {"", "K", "M", "B", "T", "P", "E"};
+        int index = 0;
+        while ((value / 1000) >= 1) {
+            value = value / 1000;
+            index++;
+        }
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return String.format("%s%s", decimalFormat.format(value), arr[index]);
     }
 
     public String formatLiker(int value) {

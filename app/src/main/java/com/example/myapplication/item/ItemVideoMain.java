@@ -10,12 +10,12 @@ public class ItemVideoMain implements Serializable {
     private String tvViewCount;
     private String tvTimeUp;
     private String idVideo;
-
+    private String tvCommentCount;
     private String likeCount;
 
     public ItemVideoMain(String tvTitleVideo, String ivVideo,
                          String ivAvtChannel, String tvNameChannel,
-                         String tvViewCount, String tvTimeUp, String idVideo, String likeCount) {
+                         String tvViewCount, String tvTimeUp, String idVideo, String tvCommentCount, String likeCount) {
         this.tvTitleVideo = tvTitleVideo;
         this.ivVideo = ivVideo;
         this.ivAvtChannel = ivAvtChannel;
@@ -23,6 +23,7 @@ public class ItemVideoMain implements Serializable {
         this.tvViewCount = tvViewCount;
         this.tvTimeUp = tvTimeUp;
         this.idVideo = idVideo;
+        this.tvCommentCount = tvCommentCount;
         this.likeCount = likeCount;
     }
 
@@ -34,6 +35,13 @@ public class ItemVideoMain implements Serializable {
         this.likeCount = likeCount;
     }
 
+    public String getTvCommentCount() {
+        return tvCommentCount;
+    }
+
+    public void setTvCommentCount(String tvCommentCount) {
+        this.tvCommentCount = tvCommentCount;
+    }
 
     public String getTvTitleVideo() {
         if (tvTitleVideo.length()>70){
