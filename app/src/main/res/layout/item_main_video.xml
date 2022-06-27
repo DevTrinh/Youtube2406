@@ -43,8 +43,7 @@
         android:textColor="@color/black"
         android:text="VÌ MẸ ANH BẮT CHIA TAY | MIU LÊ x KARIK x CHÂU ĐĂNG KHOA | Official MV ĐĂNG KHOA | Official MV"
         android:singleLine = "false"
-        android:maxLength="80"
-        />
+        android:maxLength="80"/>
 
     <TextView
         android:id="@+id/tv_item_main_name_channel"
@@ -52,7 +51,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tv_item_main_title_video"
         app:layout_constraintLeft_toLeftOf="@+id/tv_item_main_title_video"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintVertical_bias="0.2"
         android:text="Linh Nhi Chill"
         android:textColor="#5E5E5E"

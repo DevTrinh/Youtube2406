@@ -32,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.time.Duration;
 import java.time.Instant;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
     private ProgressBar pbLoadListVideoMain;
     public RecyclerView rvListVideoMain, rvListHotKeys;
     public static AdapterMainVideoYoutube adapterMainVideoYoutube;
-    AdapterListHotKeys adapterListHotKeys;
+    public static AdapterListHotKeys adapterListHotKeys;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
                             String publishedAt = "";
                             String numberLiker = "";
                             String commentCount = "";
+                            String subscriberNumber = "";
 //                    Toast.makeText(MainActivity.this, jsonItems.length()+"", Toast.LENGTH_SHORT).show();
                             for (int i = 0; i < jsonItems.length(); i++) {
                                 JSONObject jsonItem = jsonItems.getJSONObject(i);
@@ -163,9 +165,9 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
                                 titleVideo = jsonSnippet.getString(TITLE);
 //                        Toast.makeText(MainActivity.this, titleVideo+"", Toast.LENGTH_SHORT).show();
                                 publishedAt = formatTimeUpVideo(jsonSnippet.getString(PUBLISHED_AT) + "");
-                                idChannel = jsonSnippet.getString(CHANNEL_ID);
-                                Toast.makeText(MainActivity.this, idChannel+"", Toast.LENGTH_SHORT).show();
 //                        Toast.makeText(MainActivity.this, publishedAt + "", Toast.LENGTH_SHORT).show();
+                                idChannel = jsonSnippet.getString(CHANNEL_ID);
+//                                Toast.makeText(MainActivity.this, idChannel+"", Toast.LENGTH_SHORT).show();
                                 JSONObject jsonThumbnail = jsonSnippet.getJSONObject(THUMBNAIL);
                                 JSONObject jsonStandard = jsonThumbnail.getJSONObject("high");
                                 urlThumbnail = jsonStandard.getString(URL);
@@ -180,8 +182,9 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
                                 commentCount = formatComment(jsonStatistics.getInt(COMMENT_COUNT));
 //                                Toast.makeText(MainActivity.this, commentCount+"comment", Toast.LENGTH_SHORT).show();
                                 listItemVideo.add(new ItemVideoMain(titleVideo,
-                                        urlThumbnail, urlThumbnail, channelName,
-                                        viewCount, publishedAt, idVideo, commentCount, numberLiker));
+                                        urlThumbnail, idChannel, channelName,
+                                        viewCount, publishedAt, idVideo,
+                                        commentCount, numberLiker));
                             }
                             adapterMainVideoYoutube.notifyDataSetChanged();
                             pbLoadListVideoMain.setVisibility(View.GONE);

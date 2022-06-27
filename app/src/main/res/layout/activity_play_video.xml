@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/tv_title_video_play"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/yp_video_main"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -23,7 +23,8 @@
         android:paddingTop="@dimen/dp15"
         android:layout_marginLeft="@dimen/dp12"
         android:layout_marginRight="@dimen/dp50"
-        android:lines="2"
+        android:singleLine = "false"
+        android:maxLength="80"
         android:lineHeight="@dimen/dp24"
         android:text="✈️ Vừa học vừa nhìn bầu trời xanh tuyệt đẹp / HỌC CÙNG TÔI! / Bộ sưu tập nhạc nền đề xuất / 1 giờ"
         android:textSize="@dimen/sp18"
@@ -105,7 +106,6 @@
             android:text="42K"
             android:textSize="@dimen/sp12"
             android:textColor="@color/black"/>
-
 
         <ImageView
             android:id="@+id/iv_ic_dislike_play_video"
@@ -201,17 +201,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/view_line_bottom_tool"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        app:layout_constraintTop_toBottomOf="@+id/cl_tool_bar"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="8dp"
-        android:background="#757575"
-        tools:ignore="UnknownId" />
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_avt_channel_play"
         android:layout_width="0dp"
@@ -266,27 +255,17 @@
         android:textStyle="bold"
         android:text="SubScribe"/>
 
-    <View
-        android:id="@+id/view_line_bottom_avt_channel"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        app:layout_constraintTop_toBottomOf="@+id/iv_avt_channel_play"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
-        android:background="#757575"
-        tools:ignore="UnknownId" />
 
-        <TextView
-            android:id="@+id/tv_play_video_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/view_line_bottom_avt_channel"
-            app:layout_constraintLeft_toLeftOf="@id/iv_avt_channel_play"
-            android:layout_marginTop="@dimen/dp8"
-            android:text="Comments"
-            android:textColor="@color/black"
-            android:textSize="14sp"/>
+    <TextView
+        android:id="@+id/tv_play_video_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/view_line_bottom_avt_channel"
+        app:layout_constraintLeft_toLeftOf="@id/iv_avt_channel_play"
+        android:layout_marginTop="@dimen/dp8"
+        android:text="Comments"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tv_number_comment"
@@ -299,15 +278,89 @@
         android:text="3.6K"
         android:textColor="#5E5E5E"/>
 
-        <ImageView
-            android:id="@+id/iv_play_video_open_comment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="@id/tv_play_video_comment"
-            app:layout_constraintBottom_toBottomOf="@id/tv_play_video_comment"
-            app:layout_constraintRight_toRightOf="@id/tv_play_video_subscribe"
-            app:layout_constraintHeight_percent="0.035"
-            app:layout_constraintWidth_percent="0.06"
-            android:src="@drawable/ic_open_comment" />
+    <ImageView
+        android:id="@+id/iv_play_video_open_comment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/tv_play_video_comment"
+        app:layout_constraintBottom_toBottomOf="@id/tv_play_video_comment"
+        app:layout_constraintRight_toRightOf="@id/tv_play_video_subscribe"
+        app:layout_constraintHeight_percent="0.035"
+        app:layout_constraintWidth_percent="0.06"
+        android:src="@drawable/ic_open_comment" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_comment_first"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_play_video_comment"
+        app:layout_constraintTop_toBottomOf="@id/tv_play_video_comment"
+        app:layout_constraintHeight_percent="0.03"
+        app:layout_constraintWidth_percent="0.08"
+        android:layout_marginTop="@dimen/dp10"
+        android:src="@drawable/iv_main_model"/>
+
+    <TextView
+        android:id="@+id/tv_comment_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/iv_comment_first"
+        app:layout_constraintBottom_toBottomOf="@id/iv_comment_first"
+        app:layout_constraintLeft_toRightOf="@id/iv_comment_first"
+        android:layout_marginLeft="@dimen/dp12"
+        android:text="Studying while listen to this, perfect !"
+        android:textColor="@color/black"
+        android:lines="1"/>
+
+    <View
+        android:id="@+id/view_line_bottom_comment_first"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_comment_first"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/dp12"
+        android:background="#757575"
+        tools:ignore="UnknownId" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list_play_video"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/view_line_bottom_comment_first"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:id="@+id/view_line_bottom_avt_channel"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_avt_channel_play"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        android:background="#757575" />
+
+    <View
+        android:id="@+id/view_line_bottom_tool"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/cl_tool_bar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        android:background="#757575"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sv_description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/yp_video_main"
+        app:layout_constraintVertical_bias="0.0">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

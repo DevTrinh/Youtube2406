@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/drawable/like.xml" value="0.295" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/drawable/like_dislike.xml" value="0.295" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_play_video.xml" value="0.34661723818350326" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/fragment_description.xml" value="0.33" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/item_hot_keywords.xml" value="0.22659256092347158" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/item_main_video.xml" value="0.22659256092347158" />
         <entry key="..\:/JavaAndroid/YoutubeNewVersion/app/src/main/res/drawable/bg_topic_main_off_select.xml" value="0.202" />
         <entry key="..\:/JavaAndroid/YoutubeNewVersion/app/src/main/res/drawable/bg_topic_main_top_nav.xml" value="0.295" />
         <entry key="..\:/JavaAndroid/YoutubeNewVersion/app/src/main/res/layout/activity_main.xml" value="0.33" />

@@ -50,7 +50,7 @@ public class AdapterMainVideoYoutube extends
         holder.tvNameChannel.setText(itemVideoMain.getTvNameChannel());
         holder.tvViewer.setText(itemVideoMain.getTvViewCount());
 //        Picasso.get().load(item.getThumbnail()).into(holder.ivThumbnail);
-        Picasso.get().load(itemVideoMain.getIvAvtChannel()).into(holder.ivAvtChannel);
+        Picasso.get().load(itemVideoMain.getIvVideo()).into(holder.ivAvtChannel);
         Picasso.get().load(itemVideoMain.getIvVideo()).into(holder.youTubeThumbnailView);
         holder.youTubeThumbnailView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +79,6 @@ public class AdapterMainVideoYoutube extends
         YouTubeThumbnailView youTubeThumbnailView;
         ImageView ivAvtChannel, ivMenuVertical;
         TextView tvTitleMainItem, tvNameChannel, tvViewer, tvTimeUp;
-
 
         public ItemVideoMainViewHolder(@NonNull View itemView) {
             super(itemView);
