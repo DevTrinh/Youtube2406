@@ -94,7 +94,8 @@
             app:layout_constraintWidth_percent="0.2"
             app:layout_constraintHeight_percent="0.42"
             android:layout_marginBottom="@dimen/dp12"
-            android:src="@drawable/ic_like"/>
+            android:gravity="center_vertical"
+            android:src="@drawable/like"/>
 
         <TextView
             android:id="@+id/tv_like_toolbar"
@@ -253,8 +254,31 @@
         android:textAllCaps="true"
         android:textColor="#FF0000"
         android:textStyle="bold"
-        android:text="SubScribe"/>
+        android:text="SubScribe" />
 
+    <TextView
+        android:id="@+id/tv_play_video_subscribed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/view_line_bottom_tool"
+        app:layout_constraintBottom_toBottomOf="@id/view_line_bottom_avt_channel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tv_play_item_count_subscribe"
+        app:layout_constraintHorizontal_bias="0.65"
+        android:textAllCaps="true"
+        android:textColor="#5E5E5E"
+        android:textStyle="bold"
+        android:text="SubScribed"/>
+
+    <CheckBox
+        android:id="@+id/cb_on_notification_channel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_play_video_subscribed"
+        app:layout_constraintBottom_toBottomOf="@id/tv_play_video_subscribed"
+        app:layout_constraintLeft_toRightOf="@id/tv_play_video_subscribed"
+        app:layout_constraintRight_toRightOf="parent"
+        android:button="@drawable/notification_channel"/>
 
     <TextView
         android:id="@+id/tv_play_video_comment"
@@ -350,17 +374,18 @@
         android:layout_marginTop="8dp"
         android:background="#757575"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/sv_description"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/yp_video_main"
-        app:layout_constraintVertical_bias="0.0">
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/sv_description"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/yp_video_main"-->
+<!--        app:layout_constraintVertical_bias="0.0">-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,73 +18,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 
 public class ItemVideoMain implements Serializable, InterfaceDefaultValue {
-    private String tvTitleVideo;
-    private String ivVideo;
-    private String idChannel;
-    private String tvNameChannel;
-    private String tvViewCount;
-    private String tvTimeUp;
-    private String idVideo;
-    private String tvCommentCount;
-    private String likeCount;
-    private String avtChannel;
-    private String subscriberNumber;
-
-    public ItemVideoMain(String tvTitleVideo, String ivVideo, String idChannel,
-                         String tvNameChannel, String tvViewCount, String tvTimeUp,
-                         String idVideo, String tvCommentCount, String likeCount) {
-        this.tvTitleVideo = tvTitleVideo;
-        this.ivVideo = ivVideo;
-        this.idChannel = idChannel;
-        this.tvNameChannel = tvNameChannel;
-        this.tvViewCount = tvViewCount;
-        this.tvTimeUp = tvTimeUp;
-        this.idVideo = idVideo;
-        this.tvCommentCount = tvCommentCount;
-        this.likeCount = likeCount;
-    }
-
-
-    public void setIdChannel(String idChannel) {
-        this.idChannel = idChannel;
-    }
-
-    public String getAvtChannel() {
-        return avtChannel;
-    }
-
-    public void setAvtChannel(String avtChannel) {
-        this.avtChannel = avtChannel;
-    }
-
-    public String getSubscriberNumber() {
-        return subscriberNumber;
-    }
-
-    public void setSubscriberNumber(String subscriberNumber) {
-        this.subscriberNumber = subscriberNumber;
-    }
-
-    public String getLikeCount() {
-        return likeCount;
-    }
-
-    public void setLikeCount(String likeCount) {
-        this.likeCount = likeCount;
-    }
-
-    public String getTvCommentCount() {
-        return tvCommentCount;
-    }
-
-    public void setTvCommentCount(String tvCommentCount) {
-        this.tvCommentCount = tvCommentCount;
-    }
-
     public String getTvTitleVideo() {
-        if (tvTitleVideo.length()>70){
-            return tvTitleVideo+"...";
-        }
         return tvTitleVideo;
     }
 
@@ -104,7 +38,7 @@ public class ItemVideoMain implements Serializable, InterfaceDefaultValue {
         return idChannel;
     }
 
-    public void setIvAvtChannel(String idChannel) {
+    public void setIdChannel(String idChannel) {
         this.idChannel = idChannel;
     }
 
@@ -138,5 +72,64 @@ public class ItemVideoMain implements Serializable, InterfaceDefaultValue {
 
     public void setIdVideo(String idVideo) {
         this.idVideo = idVideo;
+    }
+
+    public String getTvCommentCount() {
+        return tvCommentCount;
+    }
+
+    public void setTvCommentCount(String tvCommentCount) {
+        this.tvCommentCount = tvCommentCount;
+    }
+
+    public String getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(String likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public String getUrlAvtChannel() {
+        return urlAvtChannel;
+    }
+
+    public void setUrlAvtChannel(String urlAvtChannel) {
+        this.urlAvtChannel = urlAvtChannel;
+    }
+
+    public String getNumberSubscribe() {
+        return numberSubscribe;
+    }
+
+    public void setNumberSubscribe(String numberSubscribe) {
+        this.numberSubscribe = numberSubscribe;
+    }
+
+    private String tvTitleVideo;
+    private String ivVideo;
+    private String idChannel;
+    private String tvNameChannel;
+    private String tvViewCount;
+    private String tvTimeUp;
+    private String idVideo;
+    private String tvCommentCount;
+    private String likeCount;
+    private String urlAvtChannel;
+    private String numberSubscribe;
+
+    public ItemVideoMain(String tvTitleVideo, String ivVideo, String idChannel,
+                         String tvNameChannel, String tvViewCount, String tvTimeUp,
+                         String idVideo, String tvCommentCount, String likeCount) {
+        this.tvTitleVideo = tvTitleVideo;
+        this.ivVideo = ivVideo;
+        this.idChannel = idChannel;
+        this.tvNameChannel = tvNameChannel;
+        this.tvViewCount = tvViewCount;
+        this.tvTimeUp = tvTimeUp;
+        this.idVideo = idVideo;
+        this.tvCommentCount = tvCommentCount;
+        this.likeCount = likeCount;
+        this.urlAvtChannel = urlAvtChannel;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.myapplication.adapter;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,14 @@ public class AdapterMainVideoYoutube extends
         holder.tvNameChannel.setText(itemVideoMain.getTvNameChannel());
         holder.tvViewer.setText(itemVideoMain.getTvViewCount());
 //        Picasso.get().load(item.getThumbnail()).into(holder.ivThumbnail);
-        Picasso.get().load(itemVideoMain.getIvVideo()).into(holder.ivAvtChannel);
+//        Log.d("AAAA", itemVideoMain.getUrlAvtChannel());
+//        if (itemVideoMain.getUrlAvtChannel() == null){
+//            Picasso.get().load(itemVideoMain.getIvVideo()).into(holder.youTubeThumbnailView);
+//        }
+//        else{
+//            Picasso.get().load(itemVideoMain.getUrlAvtChannel().trim()).into(holder.ivAvtChannel);
+//        }
+        Picasso.get().load(itemVideoMain.getUrlAvtChannel()).into(holder.ivAvtChannel);
         Picasso.get().load(itemVideoMain.getIvVideo()).into(holder.youTubeThumbnailView);
         holder.youTubeThumbnailView.setOnClickListener(new View.OnClickListener() {
             @Override

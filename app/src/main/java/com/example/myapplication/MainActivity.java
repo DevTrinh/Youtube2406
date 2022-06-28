@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -48,12 +49,12 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
     public RecyclerView rvListVideoMain, rvListHotKeys;
     public static AdapterMainVideoYoutube adapterMainVideoYoutube;
     public static AdapterListHotKeys adapterListHotKeys;
-
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        startActivity(new Intent(this, StarUp.class));
+        startActivity(new Intent(this, StarUp.class));
         mapping();
         pbLoadListVideoMain.setVisibility(View.VISIBLE);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -79,14 +80,17 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
         rvListVideoMain.setAdapter(adapterMainVideoYoutube);
 
         getJsonApiYoutube();
+
+
         ivEndNavHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setDisplayEndNavOff();
                 ivEndNavHome.setImageResource(R.drawable.ic_home_on);
+                Intent intent = new Intent(MainActivity.this, CoordinatorLayout.class);
+                startActivity(intent);
             }
         });
-
         ivEndNavExplore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,12 +159,14 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
                             String publishedAt = "";
                             String numberLiker = "";
                             String commentCount = "";
+                            String urlAvtChannel = "";
                             String subscriberNumber = "";
 //                    Toast.makeText(MainActivity.this, jsonItems.length()+"", Toast.LENGTH_SHORT).show();
                             for (int i = 0; i < jsonItems.length(); i++) {
                                 JSONObject jsonItem = jsonItems.getJSONObject(i);
                                 idVideo = jsonItem.getString(ID);
 //                        Toast.makeText(MainActivity.this, idVideo+"", Toast.LENGTH_SHORT).show();
+                                getUrlAvtNbSubscribeChannel(idChannel, i);
                                 JSONObject jsonSnippet = jsonItem.getJSONObject(SNIPPET);
                                 titleVideo = jsonSnippet.getString(TITLE);
 //                        Toast.makeText(MainActivity.this, titleVideo+"", Toast.LENGTH_SHORT).show();
@@ -202,6 +208,33 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
         requestQueue.add(jsonObjectRequest);
     }
 
+    private void getUrlAvtNbSubscribeChannel(String ID_CHANNEL, int position ){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+                "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics&id=" + ID_CHANNEL + "&key=" + API_KEY + "", null, new Response.Listener<JSONObject>() {
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray jsonItems = response.getJSONArray(ITEMS);
+                    JSONObject jsonItem = jsonItems.getJSONObject(0);
+                    JSONObject jsonSnippet = jsonItem.getJSONObject(SNIPPET);
+                    JSONObject jsonThumbnail = jsonSnippet.getJSONObject(THUMBNAIL);
+                    JSONObject jsonHigh = jsonThumbnail.getJSONObject(HIGH);
+                    listItemVideo.get(position).setUrlAvtChannel(jsonHigh.getString(URL));
+                    JSONObject jsonStatics = jsonItem.getJSONObject(STATISTICS);
+                    listItemVideo.get(position).setNumberSubscribe(formatSubscribe(Integer.parseInt(jsonStatics.getString(SUBSCRIBE_COUNT))));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, "FALSE GET URL AVT CHANNEL", Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
     public String formatViewer(int value) {
         String arr[] = {"", "K", "M", "B", "T", "P", "E"};
         int index = 0;
@@ -233,6 +266,17 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
         }
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         return String.format("%s %s ", decimalFormat.format(value), arr[index]);
+    }
+
+    public String formatSubscribe(int value) {
+        String arr[] = {"", "K", "M", "B", "T", "P", "E"};
+        int index = 0;
+        while ((value / 1000) >= 1) {
+            value = value / 1000;
+            index++;
+        }
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return String.format("%s%s Subscribe", decimalFormat.format(value), arr[index]);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
