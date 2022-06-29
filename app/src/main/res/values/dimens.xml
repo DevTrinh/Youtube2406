@@ -11,4 +11,5 @@
     <dimen name="sp13">13sp</dimen>
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp10">10dp</dimen>
+    <dimen name="dp18">18dp</dimen>
 </resources>

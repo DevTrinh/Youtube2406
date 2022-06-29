@@ -5,22 +5,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterMainVideoYoutube;
+import com.example.myapplication.fragment.FragmentHome;
 import com.example.myapplication.interfacee.InterfaceClickItemMainVideo;
 import com.example.myapplication.interfacee.InterfaceDefaultValue;
 import com.example.myapplication.item.ItemVideoMain;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -35,7 +37,7 @@ public class ActivityPlayVideo extends YouTubeBaseActivity
     tvNumberSubscriber, tvSubscribe, tvNumberComment, tvSubscribed;
     ImageView ivLiked, ivDisliked, ivShare, ivDownload, ivSave, ivAvtChannel;
     RecyclerView rvListVideoPlay;
-    AdapterMainVideoYoutube adapterListVideoYoutube = MainActivity.adapterMainVideoYoutube;
+    AdapterMainVideoYoutube adapterListVideoYoutube = FragmentHome.adapterMainVideoYoutube;
     YouTubePlayer ypPlayItemClick;
     ImageView ivOpenDescription;
     CheckBox cbNotificationChannel;
@@ -67,24 +69,25 @@ public class ActivityPlayVideo extends YouTubeBaseActivity
         tvNameChannel.setText(itemData.getTvNameChannel());
         tvNumberSubscriber.setText(itemData.getNumberSubscribe());
 //        Toast.makeText(this, itemData.getIvVideo()+"", Toast.LENGTH_SHORT).show();
-        Picasso.get().load(itemData.getIvVideo()).into(ivAvtChannel);
+        Picasso.get().load(itemData.getUrlAvtChannel()).into(ivAvtChannel);
 
         ypViewPlay.initialize(API_KEY, this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rvListVideoPlay.setLayoutManager(linearLayoutManager);
-        adapterListVideoYoutube = new AdapterMainVideoYoutube(MainActivity.listItemVideo, new InterfaceClickItemMainVideo() {
+        adapterListVideoYoutube = new AdapterMainVideoYoutube(FragmentHome.listItemVideo, new InterfaceClickItemMainVideo() {
             @Override
             public void onClickItemMainVideo(int position) {
-                idPlayListInItemVideo = MainActivity.listItemVideo.get(position).getIdVideo();
-                tvTimeUp.setText(MainActivity.listItemVideo.get(position).getTvTimeUp());
-                tvTitleVideo.setText(MainActivity.listItemVideo.get(position).getTvTitleVideo());
-                tvCountViews.setText(MainActivity.listItemVideo.get(position).getTvViewCount());
-                tvCountLiked.setText(MainActivity.listItemVideo.get(position).getLikeCount());
-                tvNumberComment.setText(MainActivity.listItemVideo.get(position).getTvCommentCount());
-                tvNameChannel.setText(MainActivity.listItemVideo.get(position).getTvNameChannel());
-//        Toast.makeText(this, MainActivity.listItemVideo.get(position).getIvVideo()+"", Toast.LENGTH_SHORT).show();
-                Picasso.get().load(MainActivity.listItemVideo.get(position).getIvVideo()).into(ivAvtChannel);
+                idPlayListInItemVideo = FragmentHome.listItemVideo.get(position).getIdVideo();
+                tvTimeUp.setText(FragmentHome.listItemVideo.get(position).getTvTimeUp());
+                tvTitleVideo.setText(FragmentHome.listItemVideo.get(position).getTvTitleVideo());
+                tvCountViews.setText(FragmentHome.listItemVideo.get(position).getTvViewCount());
+                tvCountLiked.setText(FragmentHome.listItemVideo.get(position).getLikeCount());
+                tvNumberComment.setText(FragmentHome.listItemVideo.get(position).getTvCommentCount());
+                tvNameChannel.setText(FragmentHome.listItemVideo.get(position).getTvNameChannel());
+//        Toast.makeText(this, FragmentHome.listItemVideo.get(position).getIvVideo()+"", Toast.LENGTH_SHORT).show();
+                Picasso.get().load(FragmentHome.listItemVideo.get(position).getUrlAvtChannel()).into(ivAvtChannel);
+                Log.d("AAAAAAAAAAAAAAAA",FragmentHome.listItemVideo.get(position).getUrlAvtChannel() );
                 ypPlayItemClick.loadVideo(idPlayListInItemVideo);
                 Toast.makeText(ActivityPlayVideo.this, idPlayListInItemVideo+"", Toast.LENGTH_SHORT).show();
             }
@@ -100,8 +103,6 @@ public class ActivityPlayVideo extends YouTubeBaseActivity
 //                fragmentTransaction.commit();
 //            }
 //        });
-
-
 
         ivLiked.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +141,16 @@ public class ActivityPlayVideo extends YouTubeBaseActivity
                 tvSubscribe.setVisibility(View.GONE);
                 tvSubscribed.setVisibility(View.VISIBLE);
                 cbNotificationChannel.setVisibility(View.VISIBLE);
+                cbNotificationChannel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked){
+                            Snackbar snackbar = Snackbar
+                                    .make(cbNotificationChannel, "Notifications turned on", Snackbar.LENGTH_LONG);
+                            snackbar.show();
+                        }
+                    }
+                });
             }
         });
 
@@ -165,6 +176,7 @@ public class ActivityPlayVideo extends YouTubeBaseActivity
             }
         });
     }
+
 
     public void testDisplayTvSubscribe(){
         if (tvSubscribe.getVisibility() == View.VISIBLE){

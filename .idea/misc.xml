@@ -6,10 +6,16 @@
         <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/drawable/dislike.xml" value="0.1695" />
         <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/drawable/like.xml" value="0.295" />
         <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/drawable/like_dislike.xml" value="0.295" />
-        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_coordinator_layout.xml" value="0.3522873022659256" />
-        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_play_video.xml" value="0.25" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/drawable/selector.xml" value="0.2895" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_coordinator_layout.xml" value="0.33" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_play_video.xml" value="0.31258644536652835" />
         <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/activity_star_up.xml" value="0.3522873022659256" />
-        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/fragment_description.xml" value="0.33" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/fragment_description.xml" value="1.0" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/fragment_explore.xml" value="0.34782608695652173" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/fragment_menu_item_video_main.xml" value="0.25" />
+        <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/fragment_subscription.xml" value="0.3522873022659256" />
         <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/item_hot_keywords.xml" value="0.22659256092347158" />
         <entry key="..\:/JavaAndroid/Youtube2406/app/src/main/res/layout/item_main_video.xml" value="0.22659256092347158" />
         <entry key="..\:/JavaAndroid/YoutubeNewVersion/app/src/main/res/drawable/bg_topic_main_off_select.xml" value="0.202" />
