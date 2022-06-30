@@ -1,13 +1,14 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -54,8 +55,6 @@ public class ActivityPlayVideo extends YouTubeBaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_video);
 
-        FragmentManager fragmentManager = getFragmentManager();
-
         mapping();
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         testDisplayTvSubscribe();
@@ -97,8 +96,7 @@ public class ActivityPlayVideo extends YouTubeBaseActivity
 
             @Override
             public void onClickMenuItemMainVideo(int position) {
-                FragmentMenuItemVideoMain fragmentMenuItemVideoMain = new FragmentMenuItemVideoMain();
-                fragmentMenuItemVideoMain.show(fragmentMenuItemVideoMain.getActivity().getSupportFragmentManager(),  fragmentMenuItemVideoMain.getTag());
+
             }
         });
         rvListVideoPlay.setAdapter(adapterListVideoYoutube);

@@ -263,22 +263,22 @@ public class FragmentHome extends Fragment implements InterfaceDefaultValue {
 //        int second = (int) (TimeUnit.MILLISECONDS.toSeconds(duration) - minutes);
         String timeUp = "";
         if (hour > 8760) {
-            timeUp = String.valueOf((hour / 8760) + " year ago");
+            timeUp = (hour / 8760) + " year ago";
         }
         if (hour > 720 && hour < 8760) {
-            timeUp = String.valueOf((hour / 720) + " month ago");
+            timeUp = (hour / 720) + " month ago";
         }
         if (hour > 168 && hour < 720) {
-            timeUp = String.valueOf((hour / 168) + " week ago");
+            timeUp = (hour / 168) + " week ago";
         }
         if (hour < 168 && hour > 24) {
-            timeUp = String.valueOf((hour / 24) + " day ago");
+            timeUp = (hour / 24) + " day ago";
         }
         if (hour > 1 && hour < 24) {
-            timeUp = String.valueOf((hour) + " hour ago");
+            timeUp = (hour) + " hour ago";
         }
         if (hour < 1) {
-            timeUp = String.valueOf(min + "min ago");
+            timeUp = min + "min ago";
         }
         return timeUp;
     }

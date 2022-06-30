@@ -103,6 +103,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintWidth_percent="0.2"
                 android:layout_marginBottom="12dp"
+                android:onClick="onClickHome"
                 android:src="@drawable/ic_home_on"
                 android:scaleType="center"/>
 
@@ -129,9 +130,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/iv_end_bar_home"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginBottom="12dp"
-                android:src="@drawable/ic_explore_off"
                 app:layout_constraintWidth_percent="0.2"
+                android:layout_marginBottom="12dp"
+                android:onClick="onClickHome"
+                android:src="@drawable/ic_explore_off"
                 android:scaleType="center"/>
 
             <TextView
@@ -160,6 +162,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.2"
                 android:layout_marginBottom="12dp"
+                android:onClick="onClickHome"
                 android:src="@drawable/ic_subscrip_off"
                 android:scaleType="center"/>
 
@@ -188,6 +191,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.2"
                 android:layout_marginBottom="12dp"
+                android:onClick="onClickHome"
                 android:src="@drawable/ic_notification_off"
                 android:scaleType="center"/>
 
@@ -216,6 +220,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintWidth_percent="0.2"
                 android:layout_marginBottom="12dp"
+                android:onClick="onClickHome"
                 android:scaleType="center"
                 android:src="@drawable/ic_library_off"/>
 

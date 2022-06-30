@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +15,9 @@ import android.widget.ProgressBar;
 
 import com.example.myapplication.adapter.AdapterListHotKeys;
 import com.example.myapplication.adapter.AdapterMainVideoYoutube;
+import com.example.myapplication.fragment.FragmentExplore;
 import com.example.myapplication.fragment.FragmentHome;
+import com.example.myapplication.fragment.FragmentSubscription;
 import com.example.myapplication.interfacee.InterfaceDefaultValue;
 import com.example.myapplication.item.ItemVideoMain;
 import com.google.android.youtube.player.YouTubeThumbnailLoader;
@@ -27,8 +31,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
             ivEndNavSubscriptions, ivEndNavNotification, ivEndNavLibrary;
     private ProgressBar pbLoadListVideoMain;
     public RecyclerView rvListVideoMain, rvListHotKeys;
-    public static AdapterMainVideoYoutube adapterMainVideoYoutube;
-    public static AdapterListHotKeys adapterListHotKeys;
+    FragmentManager fragmentManager = getSupportFragmentManager();
     @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
         setContentView(R.layout.activity_main);
 //        startActivity(new Intent(this, StarUp.class));
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         FragmentHome fragmentHome = new FragmentHome();
         //ADD FRAGMENT
@@ -44,50 +47,45 @@ public class MainActivity extends AppCompatActivity implements InterfaceDefaultV
         fragmentTransaction.commit();
 
         mapping();
-
-
-
-
-        ivEndNavHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setDisplayEndNavOff();
-                ivEndNavHome.setImageResource(R.drawable.ic_home_on);
-            }
-        });
-        ivEndNavExplore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setDisplayEndNavOff();
-                ivEndNavExplore.setImageResource(R.drawable.ic_explore_on);
-            }
-        });
-
-        ivEndNavSubscriptions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setDisplayEndNavOff();
-                ivEndNavSubscriptions.setImageResource(R.drawable.ic_subscrip_on);
-            }
-        });
-
-        ivEndNavNotification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setDisplayEndNavOff();
-                ivEndNavNotification.setImageResource(R.drawable.ic_notification_on);
-            }
-        });
-
-        ivEndNavLibrary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setDisplayEndNavOff();
-                ivEndNavLibrary.setImageResource(R.drawable.ic_library_on);
-            }
-        });
     }
 
+    public void onClickHome(@NonNull View view) {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment = null;
+        switch (view.getId()){
+            case R.id.iv_end_bar_home:
+                setDisplayEndNavOff();
+                ivEndNavHome.setImageResource(R.drawable.ic_home_on);
+                fragment = new FragmentHome();
+                fragmentTransaction.replace(R.id.cl_contains_fragment, fragment);
+                fragmentTransaction.addToBackStack("fragmentHome");
+                break;
+            case R.id.iv_end_bar_explore:
+                setDisplayEndNavOff();
+                ivEndNavExplore.setImageResource(R.drawable.ic_explore_on);
+                fragment = new FragmentExplore();
+                fragmentTransaction.replace(R.id.cl_contains_fragment, fragment);
+                fragmentTransaction.addToBackStack("fragmentExplore");
+                break;
+            case R.id.iv_end_bar_subscriptions:
+                setDisplayEndNavOff();
+                ivEndNavSubscriptions.setImageResource(R.drawable.ic_subscrip_on);
+                fragment = new FragmentSubscription();
+                fragmentTransaction.replace(R.id.cl_contains_fragment, fragment);
+                fragmentTransaction.addToBackStack("fragmentSubscription");
+                break;
+            case R.id.iv_end_bar_notifications:
+                setDisplayEndNavOff();
+                ivEndNavNotification.setImageResource(R.drawable.ic_notification_on);
+
+                break;
+            case R.id.iv_end_bar_library:
+                setDisplayEndNavOff();
+                ivEndNavLibrary.setImageResource(R.drawable.ic_library_on);
+                break;
+        }
+        fragmentTransaction.commit();
+    }
 
     public void setDisplayEndNavOff() {
         ivEndNavExplore.setImageResource(R.drawable.ic_explore_off);
