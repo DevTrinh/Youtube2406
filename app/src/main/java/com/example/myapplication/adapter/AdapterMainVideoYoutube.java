@@ -58,19 +58,26 @@ public class AdapterMainVideoYoutube extends
 //        else{
 //            Picasso.get().load(itemVideoMain.getUrlAvtChannel().trim()).into(holder.ivAvtChannel);
 //        }
+
         Picasso.get().load(itemVideoMain.getUrlAvtChannel()).into(holder.ivAvtChannel);
         Picasso.get().load(itemVideoMain.getIvVideo()).into(holder.youTubeThumbnailView);
         holder.youTubeThumbnailView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                interfaceClickItemMainVideo.onClickItemMainVideo(position);
+                interfaceClickItemMainVideo.onClickItemVideoMainVideo(position);
             }
         });
 
         holder.tvTitleMainItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                interfaceClickItemMainVideo.onClickItemMainVideo(position);
+                interfaceClickItemMainVideo.onClickItemVideoMainVideo(position);
+            }
+        });
+        holder.ivMenuVertical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaceClickItemMainVideo.onClickMenuItemMainVideo(position);
             }
         });
     }

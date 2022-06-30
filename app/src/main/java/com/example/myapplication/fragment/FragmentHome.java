@@ -53,6 +53,7 @@ public class FragmentHome extends Fragment implements InterfaceDefaultValue {
     public static AdapterMainVideoYoutube adapterMainVideoYoutube;
     public static AdapterListHotKeys adapterListHotKeys;
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,12 +72,18 @@ public class FragmentHome extends Fragment implements InterfaceDefaultValue {
         adapterMainVideoYoutube = new AdapterMainVideoYoutube(listItemVideo,
                 new InterfaceClickItemMainVideo() {
                     @Override
-                    public void onClickItemMainVideo(int position) {
+                    public void onClickItemVideoMainVideo(int position) {
                         Intent intentMainToPlayVideo =
                                 new Intent(getContext(), ActivityPlayVideo.class);
                         intentMainToPlayVideo.putExtra(VALUE_ITEM_VIDEO,
                                 listItemVideo.get(position));
                         startActivity(intentMainToPlayVideo);
+                    }
+
+                    @Override
+                    public void onClickMenuItemMainVideo(int position) {
+                        FragmentMenuItemVideoMain fragmentMenuItemVideoMain = new FragmentMenuItemVideoMain();
+                        fragmentMenuItemVideoMain.show(getActivity().getSupportFragmentManager(), getTag());
                     }
                 });
         rvListHotKeys.setAdapter(adapterListHotKeys);

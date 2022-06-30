@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.adapter.AdapterMainVideoYoutube;
 import com.example.myapplication.fragment.FragmentHome;
+import com.example.myapplication.fragment.FragmentMenuItemVideoMain;
 import com.example.myapplication.interfacee.InterfaceClickItemMainVideo;
 import com.example.myapplication.interfacee.InterfaceDefaultValue;
 import com.example.myapplication.item.ItemVideoMain;
@@ -77,7 +80,7 @@ public class ActivityPlayVideo extends YouTubeBaseActivity
         rvListVideoPlay.setLayoutManager(linearLayoutManager);
         adapterListVideoYoutube = new AdapterMainVideoYoutube(FragmentHome.listItemVideo, new InterfaceClickItemMainVideo() {
             @Override
-            public void onClickItemMainVideo(int position) {
+            public void onClickItemVideoMainVideo(int position) {
                 idPlayListInItemVideo = FragmentHome.listItemVideo.get(position).getIdVideo();
                 tvTimeUp.setText(FragmentHome.listItemVideo.get(position).getTvTimeUp());
                 tvTitleVideo.setText(FragmentHome.listItemVideo.get(position).getTvTitleVideo());
@@ -90,6 +93,12 @@ public class ActivityPlayVideo extends YouTubeBaseActivity
                 Log.d("AAAAAAAAAAAAAAAA",FragmentHome.listItemVideo.get(position).getUrlAvtChannel() );
                 ypPlayItemClick.loadVideo(idPlayListInItemVideo);
                 Toast.makeText(ActivityPlayVideo.this, idPlayListInItemVideo+"", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onClickMenuItemMainVideo(int position) {
+                FragmentMenuItemVideoMain fragmentMenuItemVideoMain = new FragmentMenuItemVideoMain();
+                fragmentMenuItemVideoMain.show(fragmentMenuItemVideoMain.getActivity().getSupportFragmentManager(),  fragmentMenuItemVideoMain.getTag());
             }
         });
         rvListVideoPlay.setAdapter(adapterListVideoYoutube);

@@ -1,5 +1,6 @@
 package com.example.myapplication.interfacee;
 
 public interface InterfaceClickItemMainVideo {
-    void onClickItemMainVideo(int position);
+    void onClickItemVideoMainVideo(int position);
+    void onClickMenuItemMainVideo(int position);
 }
